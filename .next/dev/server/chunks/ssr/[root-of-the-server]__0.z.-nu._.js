@@ -49,9 +49,12 @@ async function getServerSideProps() {
 function News({ posts, toast }) {
     const [showToast, setShowToast] = (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useState"])(false);
     (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react__$5b$external$5d$__$28$react$2c$__cjs$29$__["useEffect"])(()=>{
-        setShowToast(true);
-        const t = setTimeout(()=>setShowToast(false), 4000);
-        return ()=>clearTimeout(t);
+        const t = setTimeout(()=>setShowToast(true), 100);
+        const hide = setTimeout(()=>setShowToast(false), 4100);
+        return ()=>{
+            clearTimeout(t);
+            clearTimeout(hide);
+        };
     }, []);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$styles$2f$News$2e$module$2e$css__$5b$ssr$5d$__$28$css__module$29$__["default"].container,
@@ -61,7 +64,7 @@ function News({ posts, toast }) {
                 children: toast
             }, void 0, false, {
                 fileName: "[project]/src/pages/news/index.js",
-                lineNumber: 29,
+                lineNumber: 32,
                 columnNumber: 21
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h1", {
@@ -72,13 +75,13 @@ function News({ posts, toast }) {
                         children: "SSR · fresh on every request"
                     }, void 0, false, {
                         fileName: "[project]/src/pages/news/index.js",
-                        lineNumber: 31,
+                        lineNumber: 34,
                         columnNumber: 14
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/pages/news/index.js",
-                lineNumber: 30,
+                lineNumber: 33,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -95,19 +98,19 @@ function News({ posts, toast }) {
                                             children: t
                                         }, t, false, {
                                             fileName: "[project]/src/pages/news/index.js",
-                                            lineNumber: 39,
+                                            lineNumber: 42,
                                             columnNumber: 19
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/news/index.js",
-                                    lineNumber: 37,
+                                    lineNumber: 40,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h3", {
                                     children: post.title
                                 }, void 0, false, {
                                     fileName: "[project]/src/pages/news/index.js",
-                                    lineNumber: 44,
+                                    lineNumber: 47,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -117,7 +120,7 @@ function News({ posts, toast }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/news/index.js",
-                                    lineNumber: 45,
+                                    lineNumber: 48,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -130,7 +133,7 @@ function News({ posts, toast }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/pages/news/index.js",
-                                            lineNumber: 47,
+                                            lineNumber: 50,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -141,35 +144,35 @@ function News({ posts, toast }) {
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/pages/news/index.js",
-                                            lineNumber: 48,
+                                            lineNumber: 51,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/pages/news/index.js",
-                                    lineNumber: 46,
+                                    lineNumber: 49,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/pages/news/index.js",
-                            lineNumber: 36,
+                            lineNumber: 39,
                             columnNumber: 13
                         }, this)
                     }, post.id, false, {
                         fileName: "[project]/src/pages/news/index.js",
-                        lineNumber: 35,
+                        lineNumber: 38,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "[project]/src/pages/news/index.js",
-                lineNumber: 33,
+                lineNumber: 36,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/pages/news/index.js",
-        lineNumber: 28,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 }
