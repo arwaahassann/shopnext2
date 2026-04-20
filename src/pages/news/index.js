@@ -18,11 +18,14 @@ export async function getServerSideProps() {
 export default function News({ posts, toast }) {
   const [showToast, setShowToast] = useState(false);
 
-  useEffect(() => {
-    setShowToast(true);
-    const t = setTimeout(() => setShowToast(false), 4000);
-    return () => clearTimeout(t);
-  }, []);
+useEffect(() => {
+  const t = setTimeout(() => setShowToast(true), 100);
+  const hide = setTimeout(() => setShowToast(false), 4100);
+  return () => {
+    clearTimeout(t);
+    clearTimeout(hide);
+  };
+}, []);
 
   return (
     <div className={styles.container}>
