@@ -3,5 +3,7 @@
   "/404": "pages/404.js",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
+  "/_error": "pages/_error.js",
+  "/news": "pages/news.js",
   "/products": "pages/products.js"
 }

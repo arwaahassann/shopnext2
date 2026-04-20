@@ -1,0 +1,70 @@
+@import "https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap";
+/* [project]/src/styles/globals.css [client] (css) */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #333;
+  background: #f5f7fa;
+  min-height: 100vh;
+  font-family: Poppins, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.layout {
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+}
+
+main {
+  flex: 1;
+}
+
+/* [project]/src/components/Navbar.module.css [client] (css) */
+.Navbar-module__cJzEcG__nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 2rem;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+.Navbar-module__cJzEcG__logo {
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.Navbar-module__cJzEcG__links {
+  gap: 1.5rem;
+  display: flex;
+}
+
+.Navbar-module__cJzEcG__links a {
+  color: var(--muted);
+  border-bottom: 2px solid #0000;
+  padding: 4px 0;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: color .15s, border-color .15s;
+}
+
+.Navbar-module__cJzEcG__links a:hover, .Navbar-module__cJzEcG__links a.Navbar-module__cJzEcG__active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/*# sourceMappingURL=src_01mr045._.css.map*/

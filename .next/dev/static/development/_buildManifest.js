@@ -5,6 +5,12 @@ self.__BUILD_MANIFEST = {
   "/404": [
     "static/chunks/pages/404.js"
   ],
+  "/_error": [
+    "static/chunks/pages/_error.js"
+  ],
+  "/news": [
+    "static/chunks/pages/news.js"
+  ],
   "/products": [
     "static/chunks/pages/products.js"
   ],
@@ -18,6 +24,7 @@ self.__BUILD_MANIFEST = {
     "/404",
     "/_app",
     "/_error",
+    "/news",
     "/products",
     "/products/[id]"
   ]

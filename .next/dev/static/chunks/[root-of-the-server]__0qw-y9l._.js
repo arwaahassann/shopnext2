@@ -475,126 +475,149 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/compiler-runtime.js [client] (ecmascript)");
+// src/components/Navbar.jsx
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/link.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/router.js [client] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module './Navbar.module.css'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
 ;
 var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function Navbar() {
     _s();
-    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(7);
-    if ($[0] !== "e487bfdcda876e5bd82524e1ce3bed89f108a887bd99e44cbdcdc2d90893d0e1") {
-        for(let $i = 0; $i < 7; $i += 1){
+    const $ = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$compiler$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["c"])(15);
+    if ($[0] !== "2c96fb9b06722e162e25e0f15f3210e7a41d98f19ffd87ecc1245c969ca44d30") {
+        for(let $i = 0; $i < 15; $i += 1){
             $[$i] = Symbol.for("react.memo_cache_sentinel");
         }
-        $[0] = "e487bfdcda876e5bd82524e1ce3bed89f108a887bd99e44cbdcdc2d90893d0e1";
+        $[0] = "2c96fb9b06722e162e25e0f15f3210e7a41d98f19ffd87ecc1245c969ca44d30";
     }
-    const { pathname } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"])();
     let t0;
     if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
-        t0 = {
-            background: "#fff",
-            borderBottom: "1px solid #e8e8e8",
-            padding: "14px 32px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            position: "sticky",
-            top: 0,
-            zIndex: 100
-        };
+        t0 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+            href: "/",
+            className: styles.logo,
+            children: "ShopNext"
+        }, void 0, false, {
+            fileName: "[project]/src/components/Navbar.jsx",
+            lineNumber: 17,
+            columnNumber: 10
+        }, this);
         $[1] = t0;
     } else {
         t0 = $[1];
     }
-    let t1;
+    const t1 = router.pathname === "/" ? styles.active : "";
     let t2;
-    let t3;
-    if ($[2] === Symbol.for("react.memo_cache_sentinel")) {
-        t1 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+    if ($[2] !== t1) {
+        t2 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
             href: "/",
-            style: {
-                fontWeight: 700,
-                fontSize: "1.2rem",
-                color: "#4f6ef7"
-            },
-            children: "🛍️ ShopNext"
+            className: t1,
+            children: "Home"
         }, void 0, false, {
             fileName: "[project]/src/components/Navbar.jsx",
-            lineNumber: 36,
+            lineNumber: 25,
             columnNumber: 10
         }, this);
-        t2 = {
-            display: "flex",
-            gap: "24px"
-        };
-        t3 = [
-            [
-                "/",
-                "Home"
-            ],
-            [
-                "/products",
-                "Products"
-            ]
-        ];
         $[2] = t1;
         $[3] = t2;
-        $[4] = t3;
     } else {
-        t1 = $[2];
         t2 = $[3];
-        t3 = $[4];
     }
+    const t3 = router.pathname.startsWith("/products") ? styles.active : "";
     let t4;
-    if ($[5] !== pathname) {
-        t4 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
-            style: t0,
+    if ($[4] !== t3) {
+        t4 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+            href: "/products",
+            className: t3,
+            children: "Products"
+        }, void 0, false, {
+            fileName: "[project]/src/components/Navbar.jsx",
+            lineNumber: 34,
+            columnNumber: 10
+        }, this);
+        $[4] = t3;
+        $[5] = t4;
+    } else {
+        t4 = $[5];
+    }
+    const t5 = router.pathname === "/news" ? styles.active : "";
+    let t6;
+    if ($[6] !== t5) {
+        t6 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+            href: "/news",
+            className: t5,
+            children: "News"
+        }, void 0, false, {
+            fileName: "[project]/src/components/Navbar.jsx",
+            lineNumber: 43,
+            columnNumber: 10
+        }, this);
+        $[6] = t5;
+        $[7] = t6;
+    } else {
+        t6 = $[7];
+    }
+    const t7 = router.pathname === "/cart" ? styles.active : "";
+    let t8;
+    if ($[8] !== t7) {
+        t8 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
+            href: "/cart",
+            className: t7,
+            children: "Cart"
+        }, void 0, false, {
+            fileName: "[project]/src/components/Navbar.jsx",
+            lineNumber: 52,
+            columnNumber: 10
+        }, this);
+        $[8] = t7;
+        $[9] = t8;
+    } else {
+        t8 = $[9];
+    }
+    let t9;
+    if ($[10] !== t2 || $[11] !== t4 || $[12] !== t6 || $[13] !== t8) {
+        t9 = /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
+            className: styles.nav,
             children: [
-                t1,
+                t0,
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    style: t2,
-                    children: t3.map({
-                        "Navbar[(anonymous)()]": (t5)=>{
-                            const [href, label] = t5;
-                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                href: href,
-                                style: {
-                                    fontSize: "0.9rem",
-                                    fontWeight: 500,
-                                    color: pathname === href || href === "/products" && pathname.startsWith("/products") ? "#4f6ef7" : "#666",
-                                    borderBottom: pathname === href || href === "/products" && pathname.startsWith("/products") ? "2px solid #4f6ef7" : "2px solid transparent",
-                                    paddingBottom: "2px"
-                                },
-                                children: label
-                            }, href, false, {
-                                fileName: "[project]/src/components/Navbar.jsx",
-                                lineNumber: 59,
-                                columnNumber: 20
-                            }, this);
-                        }
-                    }["Navbar[(anonymous)()]"])
-                }, void 0, false, {
+                    className: styles.links,
+                    children: [
+                        t2,
+                        t4,
+                        t6,
+                        t8
+                    ]
+                }, void 0, true, {
                     fileName: "[project]/src/components/Navbar.jsx",
-                    lineNumber: 56,
-                    columnNumber: 30
+                    lineNumber: 60,
+                    columnNumber: 42
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/Navbar.jsx",
-            lineNumber: 56,
+            lineNumber: 60,
             columnNumber: 10
         }, this);
-        $[5] = pathname;
-        $[6] = t4;
+        $[10] = t2;
+        $[11] = t4;
+        $[12] = t6;
+        $[13] = t8;
+        $[14] = t9;
     } else {
-        t4 = $[6];
+        t9 = $[14];
     }
-    return t4;
+    return t9;
 }
-_s(Navbar, "6xaW9Jgu1F6Px3xMzMnI48KIteM=", false, function() {
+_s(Navbar, "fN7XvhJ+p5oE6+Xlo0NJmXpxjC8=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$router$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];

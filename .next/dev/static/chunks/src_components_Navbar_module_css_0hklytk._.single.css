@@ -1,0 +1,40 @@
+/* [project]/src/components/Navbar.module.css [client] (css) */
+.Navbar-module__cJzEcG__nav {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 2rem;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+.Navbar-module__cJzEcG__logo {
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.Navbar-module__cJzEcG__links {
+  gap: 1.5rem;
+  display: flex;
+}
+
+.Navbar-module__cJzEcG__links a {
+  color: var(--muted);
+  border-bottom: 2px solid #0000;
+  padding: 4px 0;
+  font-size: .9rem;
+  font-weight: 500;
+  transition: color .15s, border-color .15s;
+}
+
+.Navbar-module__cJzEcG__links a:hover, .Navbar-module__cJzEcG__links a.Navbar-module__cJzEcG__active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/*# sourceMappingURL=src_components_Navbar_module_css_0hklytk._.single.css.map*/

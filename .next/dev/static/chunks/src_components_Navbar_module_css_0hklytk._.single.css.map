@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/components/Navbar.module.css"],"sourcesContent":[".nav {\r\n  background: var(--white);\r\n  border-bottom: 1px solid var(--border);\r\n  padding: 0 2rem;\r\n  height: 56px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  position: sticky;\r\n  top: 0;\r\n  z-index: 100;\r\n}\r\n\r\n.logo {\r\n  font-weight: 700;\r\n  font-size: 1.1rem;\r\n  color: var(--accent);\r\n}\r\n\r\n.links {\r\n  display: flex;\r\n  gap: 1.5rem;\r\n}\r\n\r\n.links a {\r\n  font-size: 0.9rem;\r\n  color: var(--muted);\r\n  font-weight: 500;\r\n  padding: 4px 0;\r\n  border-bottom: 2px solid transparent;\r\n  transition: color 0.15s, border-color 0.15s;\r\n}\r\n\r\n.links a:hover,\r\n.links a.active {\r\n  color: var(--accent);\r\n  border-bottom-color: var(--accent);\r\n}"],"names":[],"mappings":"AAAA;;;;;;;;;;;;;AAaA;;;;;;AAMA;;;;;AAKA;;;;;;;;;AASA"}}]
+}
