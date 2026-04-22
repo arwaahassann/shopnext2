@@ -1,24 +1,7 @@
-.container { max-width: 1100px; margin: 0 auto; padding: 2rem; position: relative; }
 
-.toast {
-  position: fixed; top: 70px; right: 1.5rem;
-  background: #1a1a2e; color: #fff;
-  padding: 0.8rem 1.2rem; border-radius: var(--radius);
-  font-size: 0.88rem; font-weight: 500; z-index: 200;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  animation: slideIn 0.3s ease;
+.guestNote {
+  background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8;
+  padding: 0.7rem 1rem; border-radius: 10px;
+  font-size: 0.85rem; margin-bottom: 1.2rem;
 }
-@keyframes slideIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-.title { font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; }
-.title span { font-size: 0.78rem; color: var(--muted); font-weight: 400; margin-left: 8px; }
-
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
-
-.card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); }
-.cardBody { padding: 1rem; }
-.tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
-.tag { background: var(--accent-light); color: var(--accent); font-size: 0.7rem; padding: 2px 8px; border-radius: 999px; font-weight: 600; }
-.cardBody h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; }
-.cardBody p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
-.meta { display: flex; gap: 1rem; margin-top: 0.8rem; font-size: 0.8rem; color: var(--muted); }
+.guestNote a { font-weight: 600; text-decoration: underline; color: #1d4ed8; }

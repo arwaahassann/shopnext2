@@ -5,11 +5,25 @@
   padding: 0;
 }
 
-body {
-  color: #333;
-  background: #f5f7fa;
-  min-height: 100vh;
-  font-family: Poppins, sans-serif;
+:root {
+  --bg: #f7f8fa;
+  --white: #fff;
+  --border: #e4e7ec;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --accent: #4f6ef7;
+  --accent-light: #eef1ff;
+  --danger: #ef4444;
+  --danger-light: #fef2f2;
+  --radius: 10px;
+  --shadow: 0 1px 4px #00000012;
+}
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, sans-serif;
+  font-size: 15px;
 }
 
 a {
@@ -17,7 +31,7 @@ a {
   text-decoration: none;
 }
 
-.layout {
+.page-wrapper {
   flex-direction: column;
   min-height: 100vh;
   display: flex;

@@ -1,163 +1,156 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+import styles from '@/styles/Products.module.css';
 
 export async function getStaticProps() {
   try {
     const res = await fetch('https://dummyjson.com/products?limit=100&select=id,title,price,thumbnail,category,brand');
     const data = await res.json();
-    const categories = [...new Set(data.products.map(p => p.category))];
-    const brands = [...new Set(data.products.map(p => p.brand).filter(Boolean))];
-    return { props: { products: data.products, categories, brands } };
+    const categories = [...new Set(data.products.map((p) => p.category))];
+    const brands = [...new Set(data.products.map((p) => p.brand).filter(Boolean))];
+    return { props: { initialProducts: data.products, categories, brands }, revalidate: 30 };
   } catch {
-    return { props: { products: [], categories: [], brands: [] } };
+    return { props: { initialProducts: [], categories: [], brands: [] }, revalidate: 30 };
   }
 }
 
-const btn = (extra = {}) => ({
-  padding: '8px 16px',
-  borderRadius: 8,
-  border: 'none',
-  cursor: 'pointer',
-  fontFamily: 'Poppins, sans-serif',
-  fontWeight: 500,
-  fontSize: '0.85rem',
-  ...extra,
-});
+export default function Products({ initialProducts, categories, brands }) {
+  const { data: session } = useSession();
+  const isAuth = !!session;
 
-const input = {
-  padding: '9px 14px',
-  borderRadius: 8,
-  border: '1px solid #e0e0e0',
-  background: '#fff',
-  fontFamily: 'Poppins, sans-serif',
-  fontSize: '0.88rem',
-  outline: 'none',
-  color: '#333',
-};
-
-export default function Products({ products, categories, brands }) {
+  const [products, setProducts] = useState([]);
   const [search, setSearch] = useState('');
   const [cat, setCat] = useState('');
   const [brand, setBrand] = useState('');
-  const [list, setList] = useState(products);
-  const [showModal, setShowModal] = useState(false);
-  const [form, setForm] = useState({ title: '', price: '', category: '', brand: '' });
-  const [toast, setToast] = useState('');
+  const [showAdd, setShowAdd] = useState(false);
+  const [form, setForm] = useState({ title: '', price: '', category: '', brand: '', description: '', thumbnail: '' });
+  const [msg, setMsg] = useState('');
+  const [useDB, setUseDB] = useState(false);
 
-  const showToast = (msg) => { setToast(msg); setTimeout(() => setToast(''), 2500); };
+  const flash = (text) => { setMsg(text); setTimeout(() => setMsg(''), 2500); };
 
-  const filtered = list.filter(p =>
-    p.title.toLowerCase().includes(search.toLowerCase()) &&
+  useEffect(() => {
+    fetch('/api/products')
+      .then((r) => r.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) { setProducts(data); setUseDB(true); }
+        else setProducts(initialProducts);
+      })
+      .catch(() => setProducts(initialProducts));
+  }, [initialProducts]);
+
+  const allFiltered = products.filter((p) =>
+    (p.title || '').toLowerCase().includes(search.toLowerCase()) &&
     (cat ? p.category === cat : true) &&
     (brand ? p.brand === brand : true)
   );
 
-  const handleDelete = async (id) => {
-    if (!confirm('Delete this product?')) return;
-    await fetch(`https://dummyjson.com/products/${id}`, { method: 'DELETE' });
-    setList(prev => prev.filter(p => p.id !== id));
-    showToast('Deleted successfully!');
-  };
+  const filtered = isAuth ? allFiltered : allFiltered.slice(0, 4);
 
   const handleAdd = async () => {
     if (!form.title) return;
-    const res = await fetch('https://dummyjson.com/products/add', {
+    const res = await fetch('/api/products', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...form, price: parseFloat(form.price) || 0 }),
     });
     const newP = await res.json();
-    setList(prev => [{ ...newP, thumbnail: 'https://dummyjson.com/icon/dummyjson/128' }, ...prev]);
-    setShowModal(false);
-    setForm({ title: '', price: '', category: '', brand: '' });
-    showToast('Product added!');
+    setProducts((prev) => [newP, ...prev]);
+    setShowAdd(false);
+    setForm({ title: '', price: '', category: '', brand: '', description: '', thumbnail: '' });
+    flash('Product added!');
   };
 
+  const handleDelete = async (id) => {
+    if (!confirm('Delete this product?')) return;
+    await fetch(`/api/products/${id}`, { method: 'DELETE' });
+    setProducts((prev) => prev.filter((p) => (p._id || p.id) !== id));
+    flash('Product deleted.');
+  };
+
+  const getId = (p) => p._id || p.id;
+
   return (
-    <div style={{ maxWidth: 1100, margin: '0 auto', padding: '32px 24px' }}>
-
-      {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
-        <h1 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#222' }}>
-          Products <span style={{ color: '#aaa', fontWeight: 400, fontSize: '1rem' }}>({filtered.length})</span>
-        </h1>
-        <button onClick={() => setShowModal(true)} style={btn({ background: '#4f6ef7', color: '#fff' })}>
-          + Add Product
-        </button>
-      </div>
-
-      {/* Toast */}
-      {toast && (
-        <div style={{ background: '#e8f5e9', border: '1px solid #a5d6a7', color: '#2e7d32', padding: '10px 16px', borderRadius: 8, marginBottom: 16, fontSize: '0.88rem' }}>
-          {toast}
+    <div className={styles.container}>
+      {!isAuth && (
+        <div className={styles.guestBanner}>
+          Showing 4 of {allFiltered.length} products.{' '}
+          <Link href="/dashboard/login">Sign in</Link> to view all & manage products.
         </div>
       )}
 
-      {/* Filters */}
-      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 24 }}>
-        <input style={{ ...input, flex: 1, minWidth: 160 }} placeholder="Search..." value={search} onChange={e => setSearch(e.target.value)} />
-        <select style={input} value={cat} onChange={e => setCat(e.target.value)}>
-          <option value="">All Categories</option>
-          {categories.map(c => <option key={c} value={c}>{c}</option>)}
-        </select>
-        <select style={input} value={brand} onChange={e => setBrand(e.target.value)}>
-          <option value="">All Brands</option>
-          {brands.map(b => <option key={b} value={b}>{b}</option>)}
-        </select>
-        {(search || cat || brand) && (
-          <button onClick={() => { setSearch(''); setCat(''); setBrand(''); }} style={btn({ background: '#f0f0f0', color: '#666' })}>
-            Clear
-          </button>
+      <div className={styles.topBar}>
+        <div>
+          <h1>Products <span>{filtered.length}</span></h1>
+          <p className={styles.source}>{useDB ? 'MongoDB · ISR 30s' : 'DummyJSON fallback'}</p>
+        </div>
+        {isAuth && (
+          <button className={styles.addBtn} onClick={() => setShowAdd(true)}>+ Add</button>
         )}
       </div>
 
-      {/* Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))', gap: 16 }}>
-        {filtered.map(p => (
-          <div key={p.id} style={{ background: '#fff', borderRadius: 12, border: '1px solid #e8e8e8', overflow: 'hidden' }}>
-            <Link href={`/products/${p.id}`}>
-              <Image src={p.thumbnail} alt={p.title} width={300} height={160}
-                style={{ width: '100%', height: 160, objectFit: 'cover', display: 'block' }} />
+      {msg && <div className={styles.msg}>{msg}</div>}
+
+      {isAuth && (
+        <div className={styles.filters}>
+          <input className={styles.input} placeholder="Search..." value={search} onChange={(e) => setSearch(e.target.value)} />
+          <select className={styles.select} value={cat} onChange={(e) => setCat(e.target.value)}>
+            <option value="">All Categories</option>
+            {categories.map((c) => <option key={c} value={c}>{c}</option>)}
+          </select>
+          <select className={styles.select} value={brand} onChange={(e) => setBrand(e.target.value)}>
+            <option value="">All Brands</option>
+            {brands.map((b) => <option key={b} value={b}>{b}</option>)}
+          </select>
+          {(search || cat || brand) && (
+            <button className={styles.clearBtn} onClick={() => { setSearch(''); setCat(''); setBrand(''); }}>Clear</button>
+          )}
+        </div>
+      )}
+
+      <div className={styles.grid}>
+        {filtered.map((p) => (
+          <div key={getId(p)} className={styles.card}>
+            <Link href={`/products/${getId(p)}`}>
+              <Image src={p.thumbnail || 'https://dummyjson.com/icon/dummyjson/128'} alt={p.title}
+                width={200} height={130} style={{ width: '100%', height: '130px', objectFit: 'cover' }} />
             </Link>
-            <div style={{ padding: '12px 14px' }}>
-              <p style={{ fontSize: '0.7rem', color: '#4f6ef7', fontWeight: 600, textTransform: 'uppercase', marginBottom: 4 }}>{p.category}</p>
-              <Link href={`/products/${p.id}`}>
-                <p style={{ fontWeight: 600, fontSize: '0.88rem', marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.title}</p>
-              </Link>
-              {p.brand && <p style={{ fontSize: '0.78rem', color: '#999', marginBottom: 8 }}>{p.brand}</p>}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontWeight: 700, color: '#4f6ef7' }}>${p.price}</span>
-                <button onClick={() => handleDelete(p.id)} style={btn({ background: '#fff0f0', color: '#e53935', border: '1px solid #ffcdd2', padding: '5px 10px' })}>
-                  Delete
-                </button>
+            <div className={styles.cardBody}>
+              <span className={styles.cat}>{p.category}</span>
+              <Link href={`/products/${getId(p)}`}><p className={styles.name}>{p.title}</p></Link>
+              {p.brand && <p className={styles.brand}>{p.brand}</p>}
+              <div className={styles.cardFooter}>
+                <span className={styles.price}>${p.price}</span>
+                {isAuth && (
+                  <button className={styles.delBtn} onClick={() => handleDelete(getId(p))}>Delete</button>
+                )}
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Add Modal */}
-      {showModal && (
-        <div onClick={() => setShowModal(false)} style={{
-          position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.3)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 999,
-        }}>
-          <div onClick={e => e.stopPropagation()} style={{
-            background: '#fff', borderRadius: 16, padding: 28, width: '100%', maxWidth: 420,
-            display: 'flex', flexDirection: 'column', gap: 12,
-          }}>
-            <h2 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: 4 }}>Add New Product</h2>
-            {['title', 'price', 'category', 'brand'].map(field => (
-              <input key={field} placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-                type={field === 'price' ? 'number' : 'text'}
-                value={form[field]}
-                onChange={e => setForm({ ...form, [field]: e.target.value })}
-                style={{ ...input, width: '100%' }} />
+      {!isAuth && (
+        <div className={styles.lockedBanner}>
+          <p>🔒 {allFiltered.length - 4} more products hidden</p>
+          <Link href="/dashboard/login" className={styles.signInBtn}>Sign in to unlock all</Link>
+        </div>
+      )}
+
+      {showAdd && isAuth && (
+        <div className={styles.overlay} onClick={() => setShowAdd(false)}>
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <h2>Add Product</h2>
+            {['title', 'price', 'category', 'brand', 'description', 'thumbnail'].map((f) => (
+              <input key={f} className={styles.modalInput} placeholder={f.charAt(0).toUpperCase() + f.slice(1)}
+                type={f === 'price' ? 'number' : 'text'} value={form[f]}
+                onChange={(e) => setForm({ ...form, [f]: e.target.value })} />
             ))}
-            <div style={{ display: 'flex', gap: 8, justifyContent: 'flex-end', marginTop: 4 }}>
-              <button onClick={() => setShowModal(false)} style={btn({ background: '#f5f5f5', color: '#666' })}>Cancel</button>
-              <button onClick={handleAdd} style={btn({ background: '#4f6ef7', color: '#fff' })}>Add</button>
+            <div className={styles.modalBtns}>
+              <button className={styles.cancelBtn} onClick={() => setShowAdd(false)}>Cancel</button>
+              <button className={styles.addBtn} onClick={handleAdd}>Add</button>
             </div>
           </div>
         </div>

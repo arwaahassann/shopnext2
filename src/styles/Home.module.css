@@ -1,0 +1,79 @@
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+.hero {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero h1 { font-size: 1.7rem; font-weight: 700; margin-bottom: 0.4rem; }
+.hero p { color: var(--muted); font-size: 0.88rem; margin-bottom: 1.2rem; }
+
+.heroActions { display: flex; gap: 0.7rem; }
+
+.btn {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 0.55rem 1.2rem; border-radius: var(--radius);
+  font-size: 0.88rem; font-weight: 600;
+}
+.btn:hover { opacity: 0.85; }
+
+.btnOutline {
+  display: inline-block; background: transparent;
+  border: 1px solid var(--border); color: var(--text);
+  padding: 0.55rem 1.2rem; border-radius: var(--radius);
+  font-size: 0.88rem; font-weight: 500;
+}
+.btnOutline:hover { border-color: var(--accent); color: var(--accent); }
+
+.seedBox {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  min-width: 220px;
+}
+.seedLabel { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.7rem; }
+.seedBtn {
+  background: #1a1a2e; color: #fff; border: none;
+  padding: 0.5rem 1.1rem; border-radius: var(--radius);
+  font-size: 0.85rem; font-weight: 600; cursor: pointer; width: 100%;
+}
+.seedBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+.seedMsg { font-size: 0.8rem; color: var(--success); margin-top: 0.5rem; }
+
+.sectionTitle { font-size: 1rem; font-weight: 600; margin-bottom: 1rem; }
+.sectionTitle span { font-size: 0.78rem; color: var(--muted); font-weight: 400; margin-left: 6px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.card:hover { box-shadow: var(--shadow); }
+.cardBody { padding: 0.7rem; }
+.cat { font-size: 0.7rem; color: var(--accent); font-weight: 600; text-transform: capitalize; }
+.name { font-size: 0.87rem; font-weight: 500; margin: 0.2rem 0 0.1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.price { font-size: 0.95rem; font-weight: 700; color: var(--accent); }
+
+.navLinks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+@media (max-width: 600px) { .navLinks { grid-template-columns: 1fr; } }
+
+.navCard {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.2rem;
+  display: block; transition: border-color 0.15s;
+}
+.navCard:hover { border-color: var(--accent); }
+.navCard strong { display: block; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+.navCard span { font-size: 0.82rem; color: var(--muted); }
