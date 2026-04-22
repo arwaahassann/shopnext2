@@ -1,29 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f7f8fa;
+  --white: #ffffff;
+  --border: #e4e7ec;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --accent: #4f6ef7;
+  --accent-light: #eef1ff;
+  --danger: #ef4444;
+  --danger-light: #fef2f2;
+  --radius: 10px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.07);
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f5f7fa;
-  color: #333;
-  min-height: 100vh;
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.layout {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
+a { text-decoration: none; color: inherit; }
+.page-wrapper { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1; }

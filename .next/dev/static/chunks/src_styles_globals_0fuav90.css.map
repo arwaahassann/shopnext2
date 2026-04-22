@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 2, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/HiTech/Downloads/New%20folder%20%285%29/shopnext2/src/styles/globals.css"],"sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');\n\n* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  font-family: 'Poppins', sans-serif;\n  background: #f5f7fa;\n  color: #333;\n  min-height: 100vh;\n}\n\na {\n  text-decoration: none;\n  color: inherit;\n}\n\n.layout {\n  min-height: 100vh;\n  display: flex;\n  flex-direction: column;\n}\n\nmain {\n  flex: 1;\n}\n"],"names":[],"mappings":"AAEA;;;;;;AAMA;;;;;;;AAOA;;;;;AAKA;;;;;;AAMA"}}]
-}

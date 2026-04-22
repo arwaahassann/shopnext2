@@ -1,0 +1,82 @@
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+
+.topBar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; }
+.topBar h1 { font-size: 1.3rem; font-weight: 700; }
+.topBar h1 span { color: var(--muted); font-size: 0.9rem; font-weight: 400; margin-left: 6px; }
+
+.msg { background: #f0fdf4; border: 1px solid #bbf7d0; color: #166534; padding: 0.6rem 1rem; border-radius: var(--radius); font-size: 0.85rem; margin-bottom: 1rem; }
+
+.filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+
+.input, .select {
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius);
+  font-size: 0.88rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+.input { flex: 1; min-width: 160px; }
+.input:focus, .select:focus { border-color: var(--accent); }
+
+.clearBtn {
+  background: transparent; border: 1px solid var(--border); color: var(--muted);
+  padding: 0.5rem 0.9rem; border-radius: var(--radius); cursor: pointer; font-size: 0.85rem;
+}
+.clearBtn:hover { border-color: var(--danger); color: var(--danger); }
+
+.addBtn {
+  background: var(--accent); color: #fff; border: none;
+  padding: 0.5rem 1.1rem; border-radius: var(--radius);
+  font-size: 0.88rem; font-weight: 600; cursor: pointer;
+}
+.addBtn:hover { opacity: 0.85; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; }
+
+.card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.card:hover { box-shadow: var(--shadow); }
+
+.cardBody { padding: 0.7rem; }
+.cat { font-size: 0.7rem; color: var(--accent); font-weight: 600; text-transform: capitalize; }
+.name { font-size: 0.88rem; font-weight: 500; margin: 0.2rem 0 0.1rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.brand { font-size: 0.78rem; color: var(--muted); margin-bottom: 0.4rem; }
+.cardFooter { display: flex; align-items: center; justify-content: space-between; margin-top: 0.5rem; }
+.price { font-weight: 700; font-size: 0.95rem; color: var(--accent); }
+
+.delBtn {
+  background: transparent; border: 1px solid var(--border); color: var(--muted);
+  padding: 0.25rem 0.6rem; border-radius: 6px; cursor: pointer; font-size: 0.78rem;
+}
+.delBtn:hover { background: var(--danger-light); color: var(--danger); border-color: var(--danger); }
+
+/* Modal */
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; z-index: 999; }
+.modal { background: var(--white); border-radius: var(--radius); padding: 1.5rem; width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 0.7rem; box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+.modal h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.2rem; }
+.modalInput { background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.88rem; font-family: 'Inter', sans-serif; outline: none; width: 100%; }
+.modalInput:focus { border-color: var(--accent); }
+.modalBtns { display: flex; gap: 0.6rem; justify-content: flex-end; margin-top: 0.3rem; }
+.cancelBtn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.85rem; }
+.source { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
+
+.guestBanner {
+  background: #eff6ff; border: 1px solid #bfdbfe; color: #1d4ed8;
+  padding: 0.7rem 1rem; border-radius: var(--radius);
+  font-size: 0.85rem; margin-bottom: 1.2rem;
+}
+.guestBanner a { font-weight: 600; color: #1d4ed8; text-decoration: underline; }
+
+.lockedBanner {
+  text-align: center; padding: 2rem;
+  border: 1px dashed var(--border); border-radius: var(--radius);
+  margin-top: 1.5rem; color: var(--muted);
+}
+.lockedBanner p { margin-bottom: 0.8rem; font-size: 0.9rem; }
+.signInBtn {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 0.6rem 1.5rem; border-radius: var(--radius);
+  font-size: 0.88rem; font-weight: 600;
+}
